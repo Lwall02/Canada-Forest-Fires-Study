@@ -33,7 +33,10 @@ The open source programming language R was used in the making of this report (@c
 
 # Data {#sec-data}
 ## Annual Area Burnt By Wildfires
-The data set downloaded from <https://ourworldindata.org/grapher/annual-area-burnt-by-wildfires> contains the annual area burnt by wildfires per year from 2012 to 2024. The area burnt by wildfires in is reported in hectares. The 2024 data is incomplete and was last updated 15 April 2024. This includes cumulative annual data for Africa, Asia, Europe, North America, South America, and Oceania. This data set from 
+The data set downloaded from <https://ourworldindata.org/grapher/annual-area-burnt-by-wildfires> contains the annual area burnt by wildfires per year from 2012 to 2024. The area burnt by wildfires in is reported in hectares. The 2024 data is listed as incomplete because the year has not passed and was last updated on April 15, 2024. The data includes cumulative annual figures for Africa, Asia, Europe, North America, South America, and Oceania. As well as complete 13 year data for 252 individual countries. 48 countries have recorded 0 hectares burnt for all 13 years of study @wildfire_data.
+
+## Per Capita CO2 Emissions
+The data set downloaded from <https://ourworldindata.org/explorers/co2?facet=none&hideControls=false&Gas+or+Warming=CO₂&Accounting=Production-based&Fuel+or+Land+Use+Change=All+fossil+emissions&Count=Per+capita&country=CHN~USA~IND~GBR~OWID_WRL> contains annual per capita CO2 emissions per country and region. Similar to the wildfire data, it includes cumulative annual figures for Africa, Asia, Europe, North America, South America, Oceania, and the World (not included in wildfire data). As well as data for 252 countries spanning 1750 to 2022. I have selected only to examine the data from 2012 to 2022 for the cumulative figures mentioned above.
 
 # Model
 
