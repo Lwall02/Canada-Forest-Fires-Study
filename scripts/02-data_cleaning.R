@@ -19,7 +19,9 @@ clean_wildfire_data <- clean_wildfire_data |>
   mutate(year = factor(clean_wildfire_data$year),
          entity = factor(clean_wildfire_data$entity),
          code = factor(clean_wildfire_data$code))
-class(clean_wildfire_data$code)
+clean_wildfire_data <- clean_wildfire_data |>
+  filter(entity %in% c("Africa", "Asia", "Europe", "North America", "South America", "Oceania"))
+class(clean_wildfire_data$year)
 # write_csv(clean_wildfire_data, "outputs/data/wildfire_data.csv")
 
 
@@ -38,9 +40,53 @@ clean_co2_data <- clean_co2_data |>
          entity = factor(clean_co2_data$entity),
          code = factor(clean_co2_data$code)) |>
   filter(entity %in% c("Africa", "Asia", "Europe", "North America", "South America", "Oceania", "World"))
-class(clean_co2_data$year)
+class(clean_co2_data$entity)
 # write_csv(clean_co2_data, "outputs/data/co2_data.csv")
 
 
-#### Save data ####
-# write_csv(cleaned_data, "outputs/data/wildfire_data.csv")
+#### Temperature data ####
+raw_temp_data <- read.csv("inputs/data/average-monthly-surface-temperature.csv")
+
+clean_temp_data <-
+  raw_temp_data |>
+  janitor::clean_names() |>
+  filter(year >= 2012)
+
+one_year_data <- clean_temp_data %>%
+  group_by(entity, year) %>%
+  slice(1)
+
+one_year_data <- one_year_data |>
+  select(entity, code, year, average_surface_temperature_1) 
+
+one_year_data <- one_year_data |>
+  mutate(year = as.character(year)) |>
+  mutate(year = factor(year),
+         entity = factor(entity),
+         code = factor(code))
+
+global_annual_temp <- one_year_data %>%
+  ungroup() %>%
+  summarise(average_temp = mean(average_surface_temperature_1), .by = year)
+
+# write_csv(global_annual_temp, "outputs/data/global_temp_data.csv")
+
+#### Population data ####
+raw_population_data <- read.csv("inputs/data/API_SP.POP.TOTL_DS2_en_csv_v2_84031.csv")
+
+clean_population_data <-
+  raw_population_data |>
+  janitor::clean_names() |>
+  filter(country_code == "WLD") |>
+  select(x2012, x2013, x2014, x2015, x2016, x2017, x2018, x2019, x2020, x2021, x2022) |>
+  pivot_longer(cols = c("x2012", "x2013", "x2014", "x2015", "x2016", "x2017", "x2018", "x2019", "x2020", "x2021", "x2022"),
+               names_to = "year",
+               values_to = "global_population")
+
+clean_population_data$year <- gsub("x", "", clean_population_data$year)
+
+clean_population_data <- clean_population_data |>
+  mutate(year = factor(year))
+
+# write_csv(clean_population_data, "outputs/data/global_population_data.csv")
+
