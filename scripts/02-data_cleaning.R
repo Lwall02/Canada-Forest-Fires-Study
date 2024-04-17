@@ -7,7 +7,7 @@
 #### Workspace setup ####
 library(tidyverse)
 library(janitor)
-
+library(readxl)
 
 #### Widfire data ####
 raw_wildfire_data <- read_csv("inputs/data/annual-area-burnt-by-wildfires.csv")
@@ -90,3 +90,21 @@ clean_population_data <- clean_population_data |>
 
 # write_csv(clean_population_data, "outputs/data/global_population_data.csv")
 
+### Sea Level data ###
+raw_sea_data <- read_xlsx("inputs/data/gmsl-satelliterecord-copy.xlsx")
+
+clean_sea_data <- raw_sea_data |>
+  janitor::clean_names() |>
+  select(-c("x3", "x4"))
+
+colnames(clean_sea_data) <- c("year", "sea_levels")
+
+clean_sea_data <- clean_sea_data |>
+  mutate(year = round(year, 0)) 
+
+global_mean_sea_level <- clean_sea_data|>
+  summarise(gmsl = sum(sea_levels), .by = year) |>
+  drop_na() |>
+  filter(year > 2011 & year < 2023)
+
+# write_csv(global_mean_sea_level, "outputs/data/global_sea_level_data.csv")
