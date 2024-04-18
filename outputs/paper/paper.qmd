@@ -1,11 +1,11 @@
 ---
-title: "The Electric Guitar Threatens the Acoustic for Top Selling Spot"
-subtitle: "An analysis of guitar sales data over 15 years and the trends between electric and acoustic."
+title: "Fueling the Flames"
+subtitle: "An analysis of the impact of key environmental factors on the escalation and intensity of global wildfires."
 author: "Liam Wall"
 thanks: "Code and data are available at: https://github.com/Lwall02/guitars."
 date: today
 date-format: long
-abstract: "Guitar sales in 2020 peaked at $1.3 billion a 60% increase from 2019 and the trend has continued to 2023 and has no signs of slowing in 2024. This paper delves into the sales of guitar sales in the United States over the past 15 years, employing a data on guitar sales by volumes, type of guitars, and their avergae price to understand the evolving preferences among consumers. The study of this data reveals  a significant shift in the popularity between electric and acoustic guitars, reflecting changing trends due to COVID-19 and economic, technological, and music preference changes. The findings not only chart the changing tastes of guitar enthusiasts and musicians but also hint at underlying factors driving these trends, offering valuable insights for manufacturers, retailers, and policymakers in the music industry."
+abstract: "This paper presents an analysis of the impact of key environmental factors on the intensity of global wildfires. Wildfires now result in 3 million more hectares of tree cover loss per year compared to 2001. This paper delves into the relationships between wildfire area and various predictors including CO2 emissions per capita, average temperature, global population, and mean sea level. The results of this data displays the critical need for policy interventions that address not only emissions and population factors but also consider land management. Future research is warranted to incorporate additional variables such as land use changes, humidity levels, and wind patterns to enhance the model's predictive capacity. "
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -22,13 +22,11 @@ library(palmerpenguins)
 
 
 # Introduction
+The global landscape is increasingly scarred by the devastating effects of wildfires, a phenomenon exacerbated by climate change and anthropogenic influences. With a staggering 3 million additional hectares of tree cover lost annually since 2001 due to wildfires, understanding and mitigating this threat has become a critical environmental imperative. Wildfires not only result in substantial ecological damage but also pose significant threats to human life, property, and global biodiversity. The urgency of this issue calls for a thorough examination of the factors contributing to the rising intensity and frequency of wildfires. This paper aims to dissect the complex interplay between environmental variables and wildfire dynamics, seeking to illuminate the pathways through which climate change is fueling these natural disasters.
 
-The guitar, an emblem of musical expression and cultural significance, has long been a staple in the global music industry. Its allure spans genres, from the soulful strains of acoustic melodies to the electrifying riffs of rock and roll. In the United States, the guitar market has experienced a remarkable resurgence in recent years, particularly highlighted by the significant spike in sales in 2020, where it peaked at $1.3 billion—a 60% increase from the previous year. This resurgence has not only continued through to 2023 but shows no signs of slowing as we move into 2024. The surge in guitar sales amidst the challenges of the COVID-19 pandemic and the changing economic landscape raises intriguing questions about the factors fueling this growth and the shifting preferences among guitar enthusiasts.
+Wildfires are natural occurrences that play a key role in the maintenance of many ecosystems. However, the recent surge in their intensity and frequency points towards an alarming trend that is increasingly being attributed to human activity and climatic shifts. Factors such as CO2 emissions per capita and average temperature have been postulated to correlate with wildfire occurrences, given their direct and indirect effects on drought severity, forest dryness, and extreme weather conditions. Moreover, the expansion of the global population and its encroachment into forested areas has not only increased the likelihood of fire ignition but also the complexity of fire management. Mean sea level rise, an indicator of climate change, is also hypothesized to have far-reaching impacts beyond coastal ecosystems, potentially influencing weather patterns and, by extension, wildfire prevalence. Our analysis probes these associations, employing a data-driven approach to quantify their influence and unravel the challenges posed by the changing face of wildfires.
 
-This research paper aims to explore the dynamics of guitar sales in the United States over the past 15 years, focusing on the sale volumes, types of guitars (electric and acoustic), and their average pricing. By analyzing these aspects, the study seeks to uncover the evolving consumer preferences that have contributed to the recent boom in guitar sales. The dataset utilized encompasses a broad range of sales data, offering a comprehensive overview of the market trends. This analysis is particularly relevant in the context of the COVID-19 pandemic, which has had a profound impact on consumer behavior and leisure activities, potentially influencing the spike in guitar sales. Moreover, the study considers how economic fluctuations, technological advancements, and shifts in musical preferences may have contributed to the changing landscape of guitar popularity.
-
-The significant shift in the popularity between electric and acoustic guitars, as revealed by our study, reflects a broader narrative of change within the music industry and consumer habits. This paper not only charts these changing tastes among guitar enthusiasts and musicians but also delves into the underlying factors driving these trends. By doing so, it offers valuable insights for a wide range of stakeholders, including manufacturers, retailers, and policymakers in the music industry. Understanding these trends is crucial for adapting to the evolving market and for predicting future developments in the world of music and musical instruments. This research contributes to the broader discourse on cultural consumption patterns and the impact of global events on the arts and entertainment sectors, providing a window into the changing psyche of the modern consumer.
-
+As wildfires continue to intensify in a changing world, there is a paramount need for policies that not only reduce emissions but also address broader environmental and social dynamics. Effective land management, which includes fire prevention strategies and sustainable development planning, emerges as a critical component in this multifaceted issue. This paper not only identifies the current gaps in policy but also paves the way for future research to explore overlooked variables that could further elucidate wildfire behavior. By broadening the scope of analysis to include factors such as land use changes, humidity levels, and wind patterns, we can enhance the predictive models that guide policy decisions. In doing so, we may develop a more holistic approach to wildfire management and climate change mitigation, aligning immediate response strategies with long-term environmental stewardship.
 The open source programming language R was used in the making of this report (@citeR).
 
 # Data {#sec-data}
@@ -52,9 +50,6 @@ The data set downloaded from "Our World in Data' has made global population data
 
 ## Sea Level
 The data for the global mean sea level is produced by NASA using satellite radar altimetry. That is the process of measuring the distance of the surface from orbit using radar pulses. NASA make available the recorded change in sea level since January 5, 1993 to present. 
-
-
-
 
 # Model
 

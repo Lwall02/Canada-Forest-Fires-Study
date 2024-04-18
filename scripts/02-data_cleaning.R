@@ -21,7 +21,8 @@ clean_wildfire_data <- clean_wildfire_data |>
          code = factor(clean_wildfire_data$code))
 clean_wildfire_data <- clean_wildfire_data |>
   filter(entity %in% c("Africa", "Asia", "Europe", "North America", "South America", "Oceania"))
-class(clean_wildfire_data$year)
+clean_wildfire_data <- clean_wildfire_data |>
+  summarise(wildfire_area = mean(annual_area_burnt_by_wildfires), .by = year)
 # write_csv(clean_wildfire_data, "outputs/data/wildfire_data.csv")
 
 
@@ -32,16 +33,15 @@ clean_co2_data <-
   raw_co2_data |>
   janitor::clean_names()
 clean_co2_data <- clean_co2_data |>
-  filter(year >= 2012) 
+  filter(year >= 2012 & code == "OWID_WRL") 
 clean_co2_data <- clean_co2_data |>
-  filter(code == "" | code == "OWID_WRL") |>
-  mutate(year = as.character(year)) |>
   mutate(year = factor(clean_co2_data$year),
          entity = factor(clean_co2_data$entity),
-         code = factor(clean_co2_data$code)) |>
-  filter(entity %in% c("Africa", "Asia", "Europe", "North America", "South America", "Oceania", "World"))
-class(clean_co2_data$entity)
+         code = factor(clean_co2_data$code))
+
 # write_csv(clean_co2_data, "outputs/data/co2_data.csv")
+
+class(clean_co2_data$year)
 
 
 #### Temperature data ####
@@ -107,4 +107,41 @@ global_mean_sea_level <- clean_sea_data|>
   drop_na() |>
   filter(year > 2011 & year < 2023)
 
+global_mean_sea_level <- global_mean_sea_level |>
+  mutate(year = factor(year))
+
 # write_csv(global_mean_sea_level, "outputs/data/global_sea_level_data.csv")
+
+### Global Precipitation ###
+raw_precip_data <- read.csv("inputs/data/average-precipitation-per-year.csv")
+
+clean_precip_data <- raw_precip_data |>
+  janitor::clean_names()
+
+clean_precip_data <- clean_precip_data |>
+  filter(year > 2011 & year < 2023) |>
+  summarise(global_precipitation = mean(average_precipitation_in_depth_mm_per_year),
+            .by = year)
+clean_precip_data <- clean_precip_data |>
+  mutate(year = factor(year))
+
+# write_csv(clean_precip_data, "outputs/data/clean_sea_level_data.csv")
+
+class(clean_co2_data$year)
+
+
+#### ALL DATA MERGE ####
+all_data <- clean_wildfire_data %>%
+  left_join(clean_co2_data, by = "year") %>%
+  left_join(global_annual_temp, by = "year") %>%
+  left_join(clean_population_data, by = "year") %>%
+  left_join(global_mean_sea_level, by = "year") %>%
+  left_join(clean_precip_data, by = "year") 
+
+all_data <- all_data |>
+  select(-global_precipitation) |>
+  filter(code == "OWID_WRL") |>
+  select(-entity) |>
+  select(-code)
+  
+# write_csv(all_data, "outputs/data/all_merged_data.csv")
