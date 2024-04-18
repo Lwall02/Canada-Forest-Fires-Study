@@ -24,7 +24,7 @@ library(modelsummary)
 
 
 # Introduction
-The global landscape is increasingly being effected by wildfires, a phenomenon exacerbated by climate change and anthropogenic influences. With a staggering 3 million additional hectares of tree cover lost annually since 2001 due to wildfires, understanding and mitigating this threat has become a critical environmental imperative (@wildire_data. Wildfires not only result in substantial ecological damage but also pose significant threats to human life and global biodiversity. The urgency and devastation these evnts can bring about calls for a thorough examination of the factors contributing to the rising intensity and frequency of wildfires. This paper aims to dissect the complex interactions between environmental variables and wildfire statistics, seeking to highlight a new pathway through which climate change is fueling these natural disasters.
+The global landscape is increasingly being effected by wildfires, a phenomenon exacerbated by climate change and anthropogenic influences. With a staggering 3 million additional hectares of tree cover lost annually since 2001 due to wildfires, understanding and mitigating this threat has become a critical environmental imperative (@wildfire_data. Wildfires not only result in substantial ecological damage but also pose significant threats to human life and global biodiversity. The urgency and devastation these evnts can bring about calls for a thorough examination of the factors contributing to the rising intensity and frequency of wildfires. This paper aims to dissect the complex interactions between environmental variables and wildfire statistics, seeking to highlight a new pathway through which climate change is fueling these natural disasters.
 
 Wildfires are natural occurrences that play a key role in the maintenance of many ecosystems. However, the recent surge in their intensity and frequency points towards an alarming trend that is being attributed to human activity and climatic shifts. Factors such as CO2 emissions per capita and average temperature have been postulated to correlate with wildfire occurrences, forest dryness, and extreme weather conditions. Moreover, the expansion of the global population and its encroachment into forested areas has not only increased the likelihood of fire ignition but also the complexity of fire management. Mean sea level rise, an indicator of climate change, is also hypothesized to have far-reaching impacts beyond coastal ecosystems, potentially influencing weather patterns and, by extension, wildfire prevalence. Our analysis looks deeper to these associations, employing a linear model to quantify their influence and predict future wildfire occurences.
 
@@ -92,7 +92,7 @@ modelsummary(second_model)
 #| warning: false
 #| echo: false
 #| label: fig-posterior
-#| fig-cap: "This displays the posterior predictive check that were ran on both linear models. As you can see neither model is close to the observed data and will require a lot of improvment or chnage."
+#| fig-cap: "This displays the posterior predictive check that were ran on both linear models. As you can see the first linear model based on a gaussian distribution is the more fitting model. This aligns with the results of the model as the R squared is much higher compared to the second Gamma-derived model. The second model should be discarded."
 #| layout-nrow: 2
 
 pp_check(first_model)
