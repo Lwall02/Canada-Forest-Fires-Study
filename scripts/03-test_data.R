@@ -1,6 +1,5 @@
 #### Preamble ####
-#### Preamble ####
-# Purpose: Cleans the raw data 
+# Purpose: Tests the data merged into teh final set for correct values and classes
 # Author: Liam Wall
 # Date: 16 April 2024 
 # Contact: liam.wall@mail.utoronto.ca

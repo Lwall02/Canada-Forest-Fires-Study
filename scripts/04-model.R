@@ -15,6 +15,10 @@ library(modelsummary)
 #### Read data ####
 all_data <- read_csv("outputs/data/all_merged_data.csv")
 
+all_data <- all_data |>
+  mutate(global_population = log(global_population),
+         wildfire_area = log(wildfire_area))
+
 ### Model data ####
 first_model <-
   stan_glm(
@@ -35,7 +39,7 @@ second_model <-
   stan_glm(
     formula = wildfire_area ~ annual_co_emissions_per_capita + average_temp + global_population + gmsl,
     data = all_data,
-    family = gaussian(link = "log"), 
+    family = Gamma(link = "log"), 
     seed = 853
   )
 modelsummary(second_model)
@@ -48,4 +52,8 @@ saveRDS(
   file = "outputs/models/first_model.rds"
 )
 
+saveRDS(
+  second_model,
+  file = "outputs/models/second_model.rds"
+)
 
