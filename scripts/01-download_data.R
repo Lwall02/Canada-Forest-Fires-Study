@@ -8,18 +8,16 @@
 library(tidyverse)
 
 #### Download data ####
-# https://ourworldindata.org/grapher/annual-area-burnt-by-wildfires
-# https://ourworldindata.org/explorers/co2?facet=none&hideControls=false&Gas+or+Warming=CO₂&Accounting=Production-based&Fuel+or+Land+Use+Change=All+fossil+emissions&Count=Per+capita&country=CHN~USA~IND~GBR~OWID_WRL
-
-# https://api.worldbank.org/v2/en/indicator/SP.POP.TOTL?downloadformat=csv
-
 raw_wildfire_data <- read.csv("inputs/data/annual-area-burnt-by-wildfires.csv")
 raw_co2_data <- read.csv("inputs/data/co-emissions-per-capita.csv")
 raw_temp_data <- read.csv("inputs/data/average-monthly-surface-temperature.csv")
 raw_population_data <- read.csv("inputs/data/API_SP.POP.TOTL_DS2_en_csv_v2_84031.csv")
+raw_sea_data <- read_xlsx("inputs/data/gmsl-satelliterecord-copy.xlsx")
+
 
 #### Save data ####
 # write_csv(raw_wildfire_data, "inputs/data/raw_wildfire_data.csv") 
 # write_csv(raw_co2_data, "inputs/data/co-emissions-per-capita.csv") 
 # write_csv(raw_temp_data, "inputs/data/average-monthly-surface-temperature.csv") 
-
+# write_csv(raw_population_data, "inputs/data/average-monthly-surface-temperature.csv") 
+# write_csv(raw_sea_data, "inputs/data/average-monthly-surface-temperature.csv") 
