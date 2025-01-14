@@ -2,7 +2,7 @@
 title: "Fueling the Flames"
 subtitle: "An analysis of the impact of key environmental factors on the escalation and intensity of global wildfires."
 author: "Liam Wall"
-thanks: "Code and data are available at: https://github.com/Lwall02/guitars."
+thanks: "Code and data are available at: [https://github.com/Lwall02/Canada-Forest-Fires-Study.git](https://github.com/Lwall02/Canada-Forest-Fires-Study.git)."
 date: today
 date-format: long
 abstract: "This paper presents an analysis of the impact of key environmental factors on the intensity of global wildfires. Wildfires now result in 3 million more hectares of tree cover loss per year compared to 2001. This paper delves into the relationships between wildfire area and various predictors including CO2 emissions per capita, average temperature, global population, and mean sea level. The results of this data displays the critical need for policy interventions that address not only emissions and population factors but also consider land management. Future research is warranted to incorporate additional variables such as land use changes, humidity levels, and wind patterns to enhance the model's predictive capacity. "
@@ -79,8 +79,8 @@ The data for the global mean sea level is produced by NASA using satellite radar
 #| fig-cap: "This displays model summaries for both linear models. It shows the coeffieceints as well as the R squared coefficients. From these tables, the R squared  coeffecient is very low and is indicative of a very ill-fitting model."
 #| layout-nrow: 2
 
-first_model <- readRDS("/Users/liamwall/guitars/outputs/models/first_model.rds")
-second_model <- readRDS("/Users/liamwall/guitars/outputs/models/second_model.rds")
+first_model <- readRDS(here::here("outputs/models/first_model.rds"))
+second_model <- readRDS(here::here("outputs/models/second_model.rds"))
 
 modelsummary(first_model)
 modelsummary(second_model)
